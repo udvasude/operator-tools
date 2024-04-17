@@ -43,6 +43,8 @@ jobs:
       with:
         fail-build: false
         sbom: "image.spdx.json"
+    - name: Release
+      uses: softprops/action-gh-release@v2
     - name: publish SBOM
       uses: anchore/sbom-action/publish-sbom@v0
       with:
