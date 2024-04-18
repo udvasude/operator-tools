@@ -28,11 +28,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v3
+      uses: actions/checkout@main
     # - name: Build the Docker image
     #   run: docker build . --file Dockerfile --tag localbuild/testimage:latest
     - name: Scan the image and upload dependency results
-      uses: anchore/sbom-action@v0
+      uses: anchore/sbom-action@main
       with:
         path: "."
         artifact-name: src.spdx.json
@@ -40,12 +40,12 @@ jobs:
         output-file: image
         format: spdx-json
         upload-release-assets: true
-    - uses: anchore/sbom-action/publish-sbom@v0
+    - uses: anchore/sbom-action/publish-sbom@main
       with:
         sbom-artifact-match: "src.spdx.json$"
           
     - name: Scan SBOM
-      uses: anchore/scan-action@v3
+      uses: anchore/scan-action@main
       with:
         fail-build: false
         sbom: "src.spdx.json"
