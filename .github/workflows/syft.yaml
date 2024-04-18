@@ -45,7 +45,7 @@ jobs:
         output-file: image
         format: spdx-json
         upload-release-assets: true
-
+    - uses: anchore/sbom-action/publish-sbom@v0
     - name: Scan SBOM
       uses: anchore/scan-action@v3
       with:
