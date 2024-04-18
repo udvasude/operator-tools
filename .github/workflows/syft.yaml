@@ -45,6 +45,8 @@ jobs:
         sbom: "image.spdx.json"
     - name: Release
       uses: softprops/action-gh-release@v2
+      with:
+        tag_name:  "test"
     - name: publish SBOM
       uses: anchore/sbom-action/publish-sbom@v0
       with:
