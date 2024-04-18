@@ -52,4 +52,4 @@ jobs:
     - name: publish SBOM
       uses: anchore/sbom-action/publish-sbom@v0
       with:
-        sbom-artifact-match: "image.spdx.json"
+        sbom-artifact-match: ".*\\.spdx\\.json$"
