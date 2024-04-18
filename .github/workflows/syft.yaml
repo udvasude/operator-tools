@@ -30,7 +30,7 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name:  "test7"
+        tag_name:  "test8"
         files:  image.spdx.json
     - name: Checkout the code
       uses: actions/checkout@v3
