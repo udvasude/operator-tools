@@ -37,12 +37,13 @@ jobs:
         path: "."
         artifact-name: image.spdx.json
         dependency-snapshot: true
-        output-file: sbom-out
-        format: spdx
+        output-file: image
+        format: spdx-json
+        upload-release-assets: true
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name:  "test2"
+        tag_name:  "test3"
     - name: Scan SBOM
       uses: anchore/scan-action@v3
       with:
@@ -51,4 +52,4 @@ jobs:
     - name: publish SBOM
       uses: anchore/sbom-action/publish-sbom@v0
       with:
-        sbom-artifact-match: ".*\\.spdx$"
+        sbom-artifact-match: "image.spdx.json"
