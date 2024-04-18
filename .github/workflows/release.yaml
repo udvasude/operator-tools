@@ -35,14 +35,17 @@ jobs:
       uses: anchore/sbom-action@v0
       with:
         path: "."
-        artifact-name: image.spdx.json
+        artifact-name: src.spdx.json
         dependency-snapshot: true
         output-file: image
         format: spdx-json
         upload-release-assets: true
     - uses: anchore/sbom-action/publish-sbom@v0
+      with:
+        sbom-artifact-match: "src.spdx.json$"
+          
     - name: Scan SBOM
       uses: anchore/scan-action@v3
       with:
         fail-build: false
-        sbom: "image.spdx.json"
+        sbom: "src.spdx.json"
