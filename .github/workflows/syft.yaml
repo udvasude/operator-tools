@@ -38,15 +38,15 @@ jobs:
         artifact-name: image.spdx.json
         dependency-snapshot: true
         output-file: sbom-out
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name:  "test2"
     - name: Scan SBOM
       uses: anchore/scan-action@v3
       with:
         fail-build: false
         sbom: "image.spdx.json"
-    - name: Release
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name:  "test"
     - name: publish SBOM
       uses: anchore/sbom-action/publish-sbom@v0
       with:
