@@ -38,6 +38,7 @@ jobs:
         artifact-name: image.spdx.json
         dependency-snapshot: true
         output-file: sbom-out
+        format: spdx
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
