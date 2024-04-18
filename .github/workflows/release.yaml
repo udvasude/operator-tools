@@ -12,11 +12,11 @@
 # information about the Anchore SBOM tool, Syft, see
 # https://github.com/anchore/syft
 
-name: Anchore Syft SBOM scan
+name: Upload BOM
 
 on:
   release:
-      types: [published,created,edited,released]
+      types: [edited,released]
 
 permissions:
   contents: write
