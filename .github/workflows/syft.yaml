@@ -27,6 +27,11 @@ jobs:
       contents: write # required to upload to the Dependency submission API
     runs-on: ubuntu-latest
     steps:
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name:  "test5"
+        files:  image.spdx.json
     - name: Checkout the code
       uses: actions/checkout@v3
     # - name: Build the Docker image
@@ -40,16 +45,9 @@ jobs:
         output-file: image
         format: spdx-json
         upload-release-assets: true
-    - name: Release
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name:  "test4"
+
     - name: Scan SBOM
       uses: anchore/scan-action@v3
       with:
         fail-build: false
         sbom: "image.spdx.json"
-    - name: publish SBOM
-      uses: anchore/sbom-action/publish-sbom@v0
-      with:
-        sbom-artifact-match: ".*\\.spdx\\.json$"
