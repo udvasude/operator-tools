@@ -16,7 +16,8 @@ name: Anchore Syft SBOM scan
 
 on:
   release:
-  
+      types: [published,created,edited,released]
+
 permissions:
   contents: write
 
